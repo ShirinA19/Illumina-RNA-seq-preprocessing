@@ -1,3 +1,4 @@
+#!/bin/bash -l
 ## job scripts to clean adapter and low quality Illumina FASTQ reads using Nesoni clip tool
 #$ -M email address
 #$ -m bae

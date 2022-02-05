@@ -1,3 +1,4 @@
+#!/bin/bash -l
 # This is a job script to align Illumina FASTQ reads to the wheat ref cds
 #
 # Request 12 hours, 0 minutes, 0 seconds run time
