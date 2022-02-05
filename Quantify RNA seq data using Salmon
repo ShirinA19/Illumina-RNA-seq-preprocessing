@@ -1,0 +1,32 @@
+# This is a job script to align Illumina FASTQ reads to the wheat ref cds
+#
+# Request 12 hours, 0 minutes, 0 seconds run time
+#$ -l h_rt=12:0:0
+#
+# Request 8GB memory (check the need for your specific program!)
+#$ -l h_vmem=8G
+#
+# Request mails to be sent when the job finishes (e) or if it fails (a)
+#$ -M email address
+#
+# Run in the current directory (otherwise it will run from your home directory)
+#$ -cwd
+#
+# Keep all output in a single file
+#$ -j y
+#
+# We like to run tophat on several "cores" at the same time
+#$ -pe smp 4
+#
+# Place your commands below this line
+
+# Load required modules
+module load salmon
+# Create output directory
+mkdir Sample_pBA1-4_wheat_salmon_quant
+
+# Run salmon (note the backslash wich joins the lines into a single command)
+salmon quant -p 4 -o Sample_pBA1-4_wheat_salmon_quant -i /proj/mykopat-pstriif/ngs/refgenomes/salmon_indexed/wheat_index -l A \
+-1/proj/mykopat-pstriif/ngs/analyzed_read_files/rnaseq/nesoni/ 160830_D00118_0270_BC9FCWANXX/Sample_pBA1-4
+/clipped_R1.fq.gz\
+-2/proj/mykopat-pstriif/ngs/analyzed_read_files/rnaseq/nesoni/ 160830_D00118_0270_BC9FCWANXX/Sample_pBA1-4/clipped_R2.fq.gz\
