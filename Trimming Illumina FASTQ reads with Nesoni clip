@@ -1,0 +1,26 @@
+## job scripts to clean adapter and low quality Illumina FASTQ reads using Nesoni clip tool
+#$ -M email address
+#$ -m bae
+#
+# Second, tell the system that you want to execute the job in the current directory
+#
+#$ -cwd
+#
+# Request 48 hours, 0 minutes, 0 seconds run time
+#
+#$ -l h_rt=48:0:0
+#
+# Request 4GB memory (check the need for your specific program!)
+#
+#$ -l h_vmem=4G
+#
+#Place your commands below this line
+
+module load nesoni
+
+nesoni clip: clipped \
+--out-separate yes \
+--gzip yes \
+--quality 20 \
+--length 60 \
+ pairs: /proj/mykopat-pstriif/rawdata_pstriif/160830_D00118_0270_BC9FCWANXX/Sample_pBC1-1/pBC1-1_S4_L001_R1_001.fastq.gz  /proj/mykopat-pstriif/rawdata_pstriif/160830_D00118_0270_BC9FCWANXX/Sample_pBC1-1/pBC1-1_S4_L001_R2_001.fastq.gz
